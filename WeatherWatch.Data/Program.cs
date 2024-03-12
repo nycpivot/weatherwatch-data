@@ -23,7 +23,10 @@ var builder = WebApplication.CreateBuilder(args);
 // var wfSender = new WavefrontDirectIngestionClient.Builder(wavefrontUrl, wavefrontToken).Build();
 // builder.Services.AddSingleton<IWavefrontSender>(wfSender);
 
-
+// add dapr client
+builder.Services.AddDaprClient(builder => builder
+    .UseHttpEndpoint("http://localhost:3601")
+    .UseGrpcEndpoint("http://localhost:60001"));
 
 builder.Services.AddControllers();
 

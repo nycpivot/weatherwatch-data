@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Dapr.Client;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Immutable;
 // using Tap.Dotnet.Weather.Domain;
@@ -12,11 +13,12 @@ namespace WeatherWatch.Data.Controllers
     {
         // private readonly WeatherDb weatherDb;
         // private readonly IWavefrontSender wavefrontSender;
+        private readonly DaprClient daprClient;
         // private readonly ILogger<FavoritesController> logger;
 
-        public FavoritesController()
+        public FavoritesController(DaprClient daprClient)
         {
-
+            this.daprClient = daprClient;
         }
 
         public FavoritesController(
@@ -90,5 +92,11 @@ namespace WeatherWatch.Data.Controllers
 
         //     }
         // }
+
+        [HttpGet]
+        public void Get(string zipCode)
+        {
+            daprClient.SaveStateAsync("weatherwatch-extremetemps", zipCode, zipCode);
+        }
     }
 }
