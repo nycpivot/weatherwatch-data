@@ -1,1 +1,1 @@
-# weatherwatch-data
+# weatherwatch-api
