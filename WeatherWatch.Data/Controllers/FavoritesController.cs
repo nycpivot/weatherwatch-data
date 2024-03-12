@@ -21,15 +21,6 @@ namespace WeatherWatch.Data.Controllers
             this.daprClient = daprClient;
         }
 
-        public FavoritesController(
-            WeatherDb weatherDb, IWavefrontSender wavefrontSender,
-            ILogger<FavoritesController> logger)
-        {
-            this.weatherDb = weatherDb;
-            this.wavefrontSender = wavefrontSender;
-            this.logger = logger;
-        }
-
         // [HttpGet]
         // public IEnumerable<Favorite> Get()
         // {

@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Tap.Dotnet.Weather.Domain;
+using WeatherWatch.Domain;
 
 namespace WeatherWatch.Data
 {
