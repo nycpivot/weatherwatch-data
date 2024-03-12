@@ -25,8 +25,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // add dapr client
 builder.Services.AddDaprClient(builder => builder
-    .UseHttpEndpoint("http://localhost:3601")
-    .UseGrpcEndpoint("http://localhost:60001"));
+    .UseHttpEndpoint("http://localhost:3500")
+    .UseGrpcEndpoint("http://localhost:50001"));
 
 builder.Services.AddControllers();
 
