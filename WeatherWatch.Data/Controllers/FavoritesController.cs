@@ -85,6 +85,7 @@ namespace WeatherWatch.Data.Controllers
         // }
 
         [HttpGet]
+        [Route("{zipCode}")]
         public void Get(string zipCode)
         {
             daprClient.SaveStateAsync("weatherwatch-extremetemps", zipCode, zipCode);
