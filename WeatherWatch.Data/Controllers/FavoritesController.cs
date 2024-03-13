@@ -47,10 +47,10 @@ namespace WeatherWatch.Data.Controllers
         //     return favorites;
         // }
 
-        // [HttpGet]
-        // [Route("{zipCode}")]
-        // public void Save(string zipCode)
-        // {
+        [HttpGet]
+        [Route("{zipCode}")]
+        public void Save(string zipCode)
+        {
         //     if (this.Request.Headers.ContainsKey("X-TraceId"))
         //     {
         //         var start = DateTimeUtils.UnixTimeMilliseconds(DateTime.UtcNow);
@@ -82,17 +82,8 @@ namespace WeatherWatch.Data.Controllers
         //     {
 
         //     }
-        // }
 
-        [HttpGet]
-        [Route("{zipCode}")]
-        public string Get(string zipCode)
-        {
-            Console.WriteLine(zipCode);
-            
             daprClient.SaveStateAsync("weatherwatch-extremetemps", zipCode, zipCode);
-
-            return zipCode;
         }
     }
 }
