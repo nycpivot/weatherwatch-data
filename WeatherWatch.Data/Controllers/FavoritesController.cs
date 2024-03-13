@@ -82,7 +82,7 @@ namespace WeatherWatch.Data.Controllers
         //     {
 
         //     }
-
+            Console.WriteLine(zipCode);
             daprClient.SaveStateAsync("weatherwatch-extremetemps", zipCode, zipCode);
         }
     }
