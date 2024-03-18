@@ -28,6 +28,32 @@ builder.Services.AddDaprClient(builder => builder
     .UseHttpEndpoint("http://localhost:3500")
     .UseGrpcEndpoint("http://localhost:50001"));
 
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "MyProject", Version = "v1.0.0" });
+
+    var securitySchema = new OpenApiSecurityScheme
+    {
+        Description = "Using the Authorization header with the Bearer scheme.",
+        Name = "Authorization",
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.Http,
+        Scheme = "bearer",
+        Reference = new OpenApiReference
+        {
+            Type = ReferenceType.SecurityScheme,
+            Id = "Bearer"
+        }
+    };
+
+    c.AddSecurityDefinition("Bearer", securitySchema);
+
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        { securitySchema, new[] { "Bearer" } }
+    });
+});
+
 builder.Services.AddControllers();
 
 var app = builder.Build();
