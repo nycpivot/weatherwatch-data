@@ -13,8 +13,9 @@ namespace WeatherWatch.Data.Controllers
     {
         // private readonly WeatherDb weatherDb;
         // private readonly IWavefrontSender wavefrontSender;
-        private readonly DaprClient daprClient;
         // private readonly ILogger<FavoritesController> logger;
+
+        private readonly DaprClient daprClient;
 
         public FavoritesController(DaprClient daprClient)
         {
@@ -82,7 +83,7 @@ namespace WeatherWatch.Data.Controllers
         //     {
 
         //     }
-            Console.WriteLine(zipCode);
+
             daprClient.SaveStateAsync("weatherwatch-extremetemps", zipCode, zipCode);
         }
     }
